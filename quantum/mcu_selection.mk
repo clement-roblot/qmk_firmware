@@ -347,5 +347,5 @@ ifneq ($(findstring NRF52832, $(MCU)),)
 
   # Board: it should exist either in <chibios>/os/hal/boards/,
   # <keyboard_dir>/boards/, or drivers/boards/
-  BOARD ?= NRF52-E73-2G4M04S
+  BOARD ?= NRF52840-dongle
 endif

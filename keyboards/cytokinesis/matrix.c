@@ -62,6 +62,12 @@ void matrix_init(void)
     palSetPadMode(GPIOC, 11, PAL_MODE_OUTPUT_PUSHPULL);
     palSetPadMode(GPIOD, 0,  PAL_MODE_OUTPUT_PUSHPULL);*/
 
+    // P0.6: LED1 turn on
+    palSetPadMode(IOPORT1, 6,  PAL_MODE_OUTPUT_PUSHPULL);
+
+    //palSetPad(IOPORT1, 6);
+    palClearPad(IOPORT1, 6);
+
     /*memset(matrix, 0, MATRIX_ROWS * sizeof(matrix_row_t));
     memset(matrix_debouncing, 0, LOCAL_MATRIX_ROWS * sizeof(matrix_row_t));*/
 
@@ -70,6 +76,11 @@ void matrix_init(void)
 
 uint8_t matrix_scan(void)
 {
+    //palSetPad(IOPORT1, 6);
+    palClearPad(IOPORT1, 6);
+
+
+
     /*for (int row = 0; row < LOCAL_MATRIX_ROWS; row++) {
         matrix_row_t data = 0;
 
