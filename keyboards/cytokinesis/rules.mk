@@ -1,5 +1,7 @@
 # MCU name
-MCU = MK20DX256
+MCU = NRF52832
+# MK20DX256
+# NRF52832
 
 # Linker script to use
 # - it should exist either in <chibios>/os/common/ports/ARMCMx/compilers/GCC/ld/
@@ -11,7 +13,7 @@ MCU = MK20DX256
 #   - MK20DX256 for Teensy 3.1 and 3.2
 #   - MK20DX128BLDR4 for Infinity 60% with Kiibohd bootloader
 #   - MK20DX256BLDR8 for Infinity ErgoDox with Kiibohd bootloader
-MCU_LDSCRIPT = MK20DX256BLDR8
+MCU_LDSCRIPT = NRF52832
 
 # Vector table for application
 # 0x00000000-0x00001000 area is occupied by bootlaoder.*/

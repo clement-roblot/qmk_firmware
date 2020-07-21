@@ -17,7 +17,7 @@
 #ifndef _MCUCONF_H_
 #define _MCUCONF_H_
 
-#define K20x_MCUCONF
+//#define K20x_MCUCONF
 
 /*
  * HAL driver system settings.

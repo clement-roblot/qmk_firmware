@@ -1,11 +1,11 @@
-# ErgoDox Infinity
+# Cytokinesis
 
 The Infinity is two completely independent keyboards, and needs to be flashed
 for the left and right halves seperately.  To flash them:
 
   - Make sure you are in the top-level qmk_firmware directory
 
-  - Build the firmware with `make ergodox_infinity:keymapname`
+  - Build the firmware with `make cytokinesis:keymapname`
 
   - Plug in the left hand keyboard only.
 
