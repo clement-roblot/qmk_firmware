@@ -1,7 +1,8 @@
 # MCU name
-MCU = NRF52832
+MCU = NRF52840
 # MK20DX256
 # NRF52832
+# NRF52840
 
 # Linker script to use
 # - it should exist either in <chibios>/os/common/ports/ARMCMx/compilers/GCC/ld/

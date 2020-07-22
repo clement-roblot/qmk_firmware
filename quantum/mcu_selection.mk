@@ -321,7 +321,7 @@ ifneq (,$(filter $(MCU),attiny85))
   NO_SUSPEND_POWER_DOWN ?= yes
 endif
 
-ifneq ($(findstring NRF52832, $(MCU)),)
+ifneq ($(findstring NRF52840, $(MCU)),)
   # Cortex version
   MCU = cortex-m4
 
@@ -332,13 +332,13 @@ ifneq ($(findstring NRF52832, $(MCU)),)
   # - the next two should match the directories in
   #   <chibios>/os/hal/ports/$(MCU_FAMILY)/$(MCU_SERIES)
   MCU_FAMILY = NRF5
-  MCU_SERIES = NRF52832
+  MCU_SERIES = NRF52840
 
   # Linker script to use
   # - it should exist either in <chibios>/os/common/ports/ARMCMx/compilers/GCC/ld/
   # ?? or <chibios>/os/common/startup/ARMCMx/compilers/GCC/ld
   #   or <keyboard_dir>/ld/
-  MCU_LDSCRIPT ?= NRF52832
+  MCU_LDSCRIPT ?= NRF52840
 
   # Startup code to use
   #  - it should exist in <chibios>/os/common/ports/ARMCMx/compilers/GCC/mk/
