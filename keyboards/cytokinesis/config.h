@@ -23,8 +23,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VENDOR_ID       0x1c11
 #define PRODUCT_ID      0xb04d
 #define DEVICE_VER      0x0001
-#define MANUFACTURER Input Club
-#define PRODUCT Infinity_Ergodox/QMK
+#define MANUFACTURER Roblot engineering
+#define PRODUCT Cytokinesis/QMK
 
 #define MOUSEKEY_INTERVAL       20
 #define MOUSEKEY_DELAY          0
@@ -68,7 +68,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Set 0 if debouncing isn't needed */
 #define DEBOUNCE    5
 
-#define SERIAL_LINK_BAUD 562500
+#define SERIAL_LINK_BAUD 115200
 #define SERIAL_LINK_THREAD_PRIORITY (NORMALPRIO - 1)
 
 #define VISUALIZER_USER_DATA_SIZE 16

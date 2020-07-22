@@ -104,10 +104,14 @@
 #define NRF5_SPI_USE_SPI1                TRUE
 
 
-/*#define NRF5_RNG_USE_RNG0          TRUE
-#define NRF5_GPT_USE_TIMER0            TRUE
+/*#define NRF5_RNG_USE_RNG0                TRUE
+#define NRF5_GPT_USE_TIMER0              TRUE*/
 
-#define NRF5_QEI_USE_QDEC0 TRUE
+#define NRF5_ST_USE_TIMER0               TRUE
+#define NRF5_ST_USE_RTC0                 FALSE
+#define NRF5_ST_USE_RTC1                 FALSE
+
+/*#define NRF5_QEI_USE_QDEC0 TRUE
 #define NRF5_QEI_USE_LED   FALSE
 
 #define WDG_USE_TIMEOUT_CALLBACK    TRUE*/

@@ -41,7 +41,7 @@ UNICODE_ENABLE   = yes # Unicode
 SWAP_HANDS_ENABLE= yes # Allow swapping hands of keyboard
 
 CUSTOM_MATRIX = yes # Custom matrix file
-# SERIAL_LINK_ENABLE = yes
+SERIAL_LINK_ENABLE = yes
 # VISUALIZER_ENABLE = yes
 # LCD_ENABLE = yes
 # BACKLIGHT_ENABLE = yes

@@ -42,6 +42,21 @@ static matrix_row_t matrix[MATRIX_ROWS];
 // static uint16_t debouncing_time = 0;
 
 
+// this code runs before the usb and keyboard is initialized
+void matrix_setup(void)
+{
+
+
+    // P0.6: LED1 turn on
+    palSetPadMode(IOPORT1, 6,  PAL_MODE_OUTPUT_PUSHPULL);
+
+    palSetPad(IOPORT1, 6);
+    //palClearPad(IOPORT1, 6);
+
+
+
+}
+
 void matrix_init(void)
 {
     /* Row(sense) */
@@ -65,8 +80,8 @@ void matrix_init(void)
     // P0.6: LED1 turn on
     palSetPadMode(IOPORT1, 6,  PAL_MODE_OUTPUT_PUSHPULL);
 
-    //palSetPad(IOPORT1, 6);
-    palClearPad(IOPORT1, 6);
+    palSetPad(IOPORT1, 6);
+    //palClearPad(IOPORT1, 6);
 
     /*memset(matrix, 0, MATRIX_ROWS * sizeof(matrix_row_t));
     memset(matrix_debouncing, 0, LOCAL_MATRIX_ROWS * sizeof(matrix_row_t));*/
@@ -76,9 +91,27 @@ void matrix_init(void)
 
 uint8_t matrix_scan(void)
 {
-    //palSetPad(IOPORT1, 6);
-    palClearPad(IOPORT1, 6);
+    static long cpt = 0;
+    static char ledState = 0;
 
+    //if(cpt > 10000)
+    {
+        if(ledState == 0)
+        {
+            palClearPad(IOPORT1, 6);
+            ledState = 1;
+        }
+        else
+        {
+            palSetPad(IOPORT1, 6);
+            ledState = 0;
+        }
+
+        cpt = 0;
+    }
+    
+    wait_ms(1000);
+    cpt++;
 
 
     /*for (int row = 0; row < LOCAL_MATRIX_ROWS; row++) {
