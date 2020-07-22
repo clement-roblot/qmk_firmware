@@ -265,6 +265,7 @@ ST_LINK_ARGS ?=
 # List any extra directories to look for libraries here.
 EXTRALIBDIRS = $(RULESPATH)/ld
 
+NRF_UTIL ?= nrfutil
 DFU_UTIL ?= dfu-util
 ST_LINK_CLI ?= st-link_cli
 
@@ -281,6 +282,14 @@ dfu-util: $(BUILD_DIR)/$(TARGET).bin cpfirmware sizeafter
 
 # Legacy alias
 dfu-util-wait: dfu-util
+
+define EXEC_NRF_UTIL
+	$(NRF_UTIL) pkg generate --application $(BUILD_DIR)/$(TARGET).hex --application-version 1 --sd-req 0xCA --hw-version 52 $(BUILD_DIR)/package.zip
+	$(NRF_UTIL) dfu usb-serial -p /dev/ttyACM1 -pkg $(BUILD_DIR)/package.zip
+endef
+
+nrfutil: $(BUILD_DIR)/$(TARGET).bin cpfirmware sizeafter
+	$(call EXEC_NRF_UTIL)
 
 # TODO: Remove once ARM has a way to configure EECONFIG_HANDEDNESS
 #       within the emulated eeprom via dfu-util or another tool

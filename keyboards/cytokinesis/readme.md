@@ -46,3 +46,26 @@ You have a few options in how you flash the firmware:
   any part of the firmware code itself, you can program only the MASTER half.
 
 - It is safest to program both halves though.
+
+
+
+
+
+
+
+make cytokinesis:default:nrfutil
+
+
+to prpogramm nRF : 
+nrfutil dfu usb-serial -p /dev/ttyACM1 -pkg package.zip
+
+
+nrfutil pkg generate --application .build/cytokinesis_default.hex --application-version 1 --sd-req 0xCA --hw-version 52 package.zip
+
+
+
+
+package creation : https://devzone.nordicsemi.com/nordic/nordic-blog/b/blog/posts/creating-zip-package-for-dfu
+
+
+
