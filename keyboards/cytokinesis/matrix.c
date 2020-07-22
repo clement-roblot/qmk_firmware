@@ -46,11 +46,13 @@ static matrix_row_t matrix[MATRIX_ROWS];
 void matrix_setup(void)
 {
 
+    // Button pull up
+    /*palSetPadMode(IOPORT2, 6,  PAL_MODE_INPUT_PULLUP);
 
     // P0.6: LED1 turn on
     palSetPadMode(IOPORT1, 6,  PAL_MODE_OUTPUT_PUSHPULL);
 
-    palSetPad(IOPORT1, 6);
+    palSetPad(IOPORT1, 6);*/
     //palClearPad(IOPORT1, 6);
 
 
@@ -77,11 +79,23 @@ void matrix_init(void)
     palSetPadMode(GPIOC, 11, PAL_MODE_OUTPUT_PUSHPULL);
     palSetPadMode(GPIOD, 0,  PAL_MODE_OUTPUT_PUSHPULL);*/
 
-    // P0.6: LED1 turn on
-    palSetPadMode(IOPORT1, 6,  PAL_MODE_OUTPUT_PUSHPULL);
 
+    // Button pull up
+    palSetPadMode(IOPORT2, 6,  PAL_MODE_INPUT_PULLUP);
+
+    // P0.6: LED1
+    palSetPadMode(IOPORT1, 6,  PAL_MODE_OUTPUT_PUSHPULL);
     palSetPad(IOPORT1, 6);
-    //palClearPad(IOPORT1, 6);
+
+    // P0.8: LED2_R
+    palSetPadMode(IOPORT1, 8,  PAL_MODE_OUTPUT_PUSHPULL);
+    palSetPad(IOPORT1, 8);
+    // P1.9: LED2_G
+    palSetPadMode(IOPORT2, 9,  PAL_MODE_OUTPUT_PUSHPULL);
+    palSetPad(IOPORT2, 9);
+    // P0.12: LED2_B
+    palSetPadMode(IOPORT1, 12,  PAL_MODE_OUTPUT_PUSHPULL);
+    palSetPad(IOPORT1, 12);
 
     /*memset(matrix, 0, MATRIX_ROWS * sizeof(matrix_row_t));
     memset(matrix_debouncing, 0, LOCAL_MATRIX_ROWS * sizeof(matrix_row_t));*/
@@ -91,27 +105,33 @@ void matrix_init(void)
 
 uint8_t matrix_scan(void)
 {
-    static long cpt = 0;
     static char ledState = 0;
 
-    //if(cpt > 10000)
-    {
-        if(ledState == 0)
-        {
-            palClearPad(IOPORT1, 6);
-            ledState = 1;
-        }
-        else
-        {
-            palSetPad(IOPORT1, 6);
-            ledState = 0;
-        }
 
-        cpt = 0;
+    if(palReadPad(IOPORT2, 6))
+    {
+        palClearPad(IOPORT1, 6);
+        matrix[0] = 0;
     }
-    
-    wait_ms(1000);
-    cpt++;
+    else
+    {
+        palSetPad(IOPORT1, 6);
+        matrix[0] = 1;
+    }
+
+
+    /*if(ledState == 0)
+    {
+        palClearPad(IOPORT1, 6);
+        ledState = 1;
+    }
+    else
+    {
+        palSetPad(IOPORT1, 6);
+        ledState = 0;
+    }*/
+
+    //wait_ms(1000);
 
 
     /*for (int row = 0; row < LOCAL_MATRIX_ROWS; row++) {
